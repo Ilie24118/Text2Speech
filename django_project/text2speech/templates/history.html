@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    {% if user_mp3_files %}
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                {% for mp3_file in user_mp3_files %}
+                <li class="list-group-item">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <audio controls class="me-3" style="width: 60%;"> <!-- Set width to 100% for responsiveness -->
+                                <source src="{{ MEDIA_URL }}{{ mp3_file.name }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <h5 class="mb-0">{{ mp3_file.text }}</h5>
+                                <p class="text-muted mb-0">Created at: {{ mp3_file.created_at }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col">
+            <p class="lead">You have not generated any MP3 files yet.</p>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}
