@@ -16,7 +16,11 @@ import shortuuid
 
 import os
 
-api_key = 'bv9xZALKkmIl5FkVPOoh7zNfNudNpN37VuCEDLbvc3UqlRT7tIUT6r'
+from dotenv import load_dotenv
+
+load_dotenv()
+
+api_key = os.getenv('API_KEY')
 speech_api = UnrealSpeechAPI(api_key)
 
 # Create your views here.

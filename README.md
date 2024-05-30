@@ -19,6 +19,8 @@ Text2Speech is a Django web application that converts text into speech. Users ca
 
    cd text2speech-django
 
+   pip install -r requirements.txt
+
    python manage.py migrate
 
    python manage.py runserver
