@@ -6,27 +6,34 @@
 
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
         <div class="card-body">
           <h2 class="card-title text-center mb-4">Text to Speech</h2>
 
           <form action="/" method="post">
             {% csrf_token %}
-            <div class="mb-3">
-              {{ form.text|as_crispy_field }}
+            
+            <div class="form-group mb-4">
+              <label for="exampleFormControlTextarea1" class="form-label">Maximum characters 2000</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="text" placeholder="Enter your text here..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
           </form>
 
           {% if audio_path %}
-            <div class="mt-4">
-              <h3 class="text-center">Generated Audio</h3>
+            <div class="mt-5">
+              <h3 class="text-center mb-4">Generated Audio</h3>
               <div class="d-flex justify-content-center">
-                <audio controls class="mt-3">
-                  <source src="{{ MEDIA_URL }}/{{ audio_path }}" type="audio/mpeg">
-                  Your browser does not support the audio element.
-                </audio>
+                <div class="audio-player p-3">
+                  <audio id="audioPlayer" controls>
+                    <source src="{{ MEDIA_URL }}/{{ audio_path }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
               </div>
             </div>
           {% endif %}
@@ -36,5 +43,32 @@
     </div>
   </div>
 </div>
+
+<style>
+  .audio-player {
+    width: 100%;
+    max-width: 500px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  .audio-player audio {
+    width: 100%;
+  }
+  .form-control {
+    border-radius: 10px;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+</style>
 
 {% endblock content %}

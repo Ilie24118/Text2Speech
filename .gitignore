@@ -4,3 +4,4 @@ venv
 django_project/db.sqlite3
 media/
 data/db/
+db.sqlite3
