@@ -3,6 +3,6 @@ venv
 .env
 django_project/db.sqlite3
 media/*
-
+!media/
 data/db/
 db.sqlite3
