@@ -2,5 +2,5 @@
 venv
 .env
 django_project/db.sqlite3
-data/
 media/
+data/db/
